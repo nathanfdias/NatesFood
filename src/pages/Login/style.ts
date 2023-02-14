@@ -5,7 +5,7 @@ export const LoginContainer = styled.div`
   height: 100vh;
   width: 100%;
   /* background-image: url(${background}); */
-  background-color: #F7E7CE;
+  background-color: #0004;
   background-position: center;
   background-size: cover;
   display: flex;

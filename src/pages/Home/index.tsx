@@ -16,7 +16,7 @@ export function Home() {
                         <p>Hamburguers, pizzas e doces!</p>
                     </DescriptText>
                     <ButtonAccess>
-                        Bem Vindo!
+                        Acessar Menu!
                     </ButtonAccess>
                 </HomeDescript>
             </HomeBackground>
