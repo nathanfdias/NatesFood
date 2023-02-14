@@ -4,13 +4,16 @@ import background from "../../assets/BackgroundLogin.jpg";
 export const LoginContainer = styled.div`
   height: 100vh;
   width: 100%;
-  /* background-image: url(${background}); */
+  background-image: url(${background});
   background-color: #0004;
   background-position: center;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media(max-width:820px) { 
+    background-image: url(${background});
+}
 `;
 
 export const Subtitle = styled.p`
@@ -35,12 +38,30 @@ export const LeftContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  padding-left: 6rem;
+  padding-left: 6%;
+  padding-right: 4%;
+  @media(max-width:1090px) {
+    width: 50%;
+  }
+  @media(max-width:820px) {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+
+}
 `;
 
 export const RightContent = styled.div`
   height: 100%;
   width: 60%;
+  @media(max-width:1090px) {
+    width: 50%;
+  }
+
+  @media(max-width:820px) {
+    display: none;
+  }
 `;
 
 export const RightContentImg = styled.img`
@@ -54,10 +75,14 @@ export const InputContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   width: 100%;
+  @media(max-width:820px) { 
+    align-items: center;
+    width: 80%;
+  }
 `;
 
 export const InputTextUsername = styled.input`
-  width: 60%;
+  width: 80%;
   padding-block: 1rem;
   padding-left: 1rem;
   border: none;
@@ -73,10 +98,13 @@ export const InputTextUsername = styled.input`
 export const InputPasswordContent = styled.div`
   display: flex;
   width: 100%;
+  @media(max-width:820px) { 
+    width: 80%;
+}
 `;
 
 export const InputTextPassword = styled.input`
-  width: 50%;
+  width: 70%;
   padding-block: 1rem;
   padding-left: 1rem;
   border: none;
@@ -87,6 +115,10 @@ export const InputTextPassword = styled.input`
     border: 0 none;
     outline: 0;
   }
+  @media(max-width:820px) { 
+    align-items: center;
+    width: 100%;
+}
 `;
 
 export const InputPasswordVisibility = styled.div`
@@ -101,7 +133,7 @@ export const InputPasswordVisibility = styled.div`
 `;
 
 export const ButtonLogin = styled.button`
-  width: 30%;
+  width: 10rem;
   background-color: #000920;
   color: #fff;
   cursor: pointer;
