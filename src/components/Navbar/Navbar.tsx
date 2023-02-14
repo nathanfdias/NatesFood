@@ -31,17 +31,17 @@ export function Navbar() {
     return (
       <>
         <Item>
-          <Link href={"#"}>
+          <Link href={"/"}>
             <House size={22} alt={'Home Page'}/>
           </Link>
         </Item>
         <Item>
-          <Link href={"#"}>
+          <Link href={"/perfil"}>
             <User size={22} alt={'Perfil'}/>
           </Link>
         </Item>
         <Item>
-          <Link href={"#"}>
+          <Link href={"/products"}>
             <ForkKnife size={22} alt={'Catalog'}/>
           </Link>
         </Item>
