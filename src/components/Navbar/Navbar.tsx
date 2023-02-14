@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/useAuth";
 import {
   NavBarContainer,
   NavBarLogo,
@@ -20,12 +22,20 @@ import {
 } from "phosphor-react";
 import logo from '../../assets/logo.png';
 
+
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
+  const auth = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenuClick = () => {
     setMenuClick(!menuClick);
   };
+
+  function handleSignout() { 
+       auth.logout()
+       navigate("/login")
+  }
 
   const ListLinks = () => {
     return (
@@ -51,8 +61,8 @@ export function Navbar() {
           </Link>
         </Item>
         <Item>
-          <Link href={"#"}>
-            <SignOut size={22} alt={'LogOut'}/>
+          <Link >
+            <SignOut size={22} alt={'LogOut'} onClick={handleSignout}/>
           </Link>
         </Item>
       </>
