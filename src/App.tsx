@@ -1,6 +1,6 @@
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/global';
-
+import { AuthProvider } from './context/authProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router/Router';
 import usePersistedState from './utils/usePersistensedState';
@@ -16,12 +16,14 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-      <GlobalStyle />
-        <Router />
-      </BrowserRouter>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+        <GlobalStyle />
+          <Router />
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
 
