@@ -69,7 +69,7 @@ export function Navbar() {
         </Item>
         <Item>
           <Link>
-            <NavLink to="#">
+            <NavLink to="/cart">
             <DefaultColor>
               <ShoppingCartSimple size={22} alt={"Shopping Cart"} />
             </DefaultColor>
