@@ -1,5 +1,5 @@
 import { BeerBottle, Cookie, Hamburger, Pizza } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import bannerImg from "../../assets/bannerFood.png";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { api } from "../../service/api";
@@ -17,6 +17,7 @@ import {
   ProductImages,
   ProductsContent,
 } from "./styles";
+import { CartContext } from "../../context/handleCart";
 
 interface IProduct {
   id: number;
@@ -28,6 +29,7 @@ interface IProduct {
 export function Products() {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [categoryName, setCategoryName] = useState("Hamburguer");
+  const { handleAddItemToCart } = useContext(CartContext);
 
   useEffect(() => {
     api
@@ -77,7 +79,15 @@ export function Products() {
                   <ProductDescription>
                     <p>{product.name}</p>
                     <p>{currencyFormat(product.price)}</p>
-                    <ProductButtonCart>
+                    <ProductButtonCart onClick={() => {
+                      handleAddItemToCart(
+                        product.id,
+                        product.name,
+                        product.imageUrl,
+                        product.price
+                      )
+                      alert(`Produto: ${product.name} adicionado ao carrinho!`);
+                    }}>
                       <p>Adicionar</p>
                     </ProductButtonCart>
                   </ProductDescription>

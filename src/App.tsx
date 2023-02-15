@@ -4,6 +4,7 @@ import { AuthProvider } from "./context/authProvider";
 import { BrowserRouter } from "react-router-dom";
 import { Router } from "./router/Router";
 import usePersistedState from "./utils/usePersistensedState";
+import { CartProvider } from "./context/handleCart";
 
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
@@ -18,12 +19,14 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <GlobalStyle />
-            <Router />
-          </BrowserRouter>
-        </ThemeProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>
+            <BrowserRouter>
+              <GlobalStyle />
+              <Router />
+            </BrowserRouter>
+          </ThemeProvider>
+        </CartProvider>
       </AuthProvider>
     </>
   );
