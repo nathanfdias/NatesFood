@@ -75,7 +75,7 @@ export const NavBarListAct = styled.ul`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled.div`
   font-size: 1.2rem;
   text-decoration: none;
   color: #F0BF8C;
@@ -106,4 +106,8 @@ export const Link = styled.a`
       opacity: 0.9;
     }
   }
+`;
+
+export const DefaultColor = styled.div`
+  color: #F0BF8C;
 `;

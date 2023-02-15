@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
 import {
   NavBarContainer,
@@ -9,7 +9,8 @@ import {
   Link,
   NavBarList,
   NavBarListAct,
-  LogoImg
+  LogoImg,
+  DefaultColor,
 } from "./style";
 import {
   List,
@@ -18,10 +19,9 @@ import {
   ShoppingCartSimple,
   SignOut,
   House,
-  ForkKnife
+  ForkKnife,
 } from "phosphor-react";
-import logo from '../../assets/logo.png';
-
+import logo from "../../assets/logo.png";
 
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
@@ -32,37 +32,57 @@ export function Navbar() {
     setMenuClick(!menuClick);
   };
 
-  function handleSignout() { 
-       auth.logout()
-       navigate("/login")
+  function handleSignout() {
+    auth.logout();
+    navigate("/login");
   }
 
   const ListLinks = () => {
     return (
       <>
         <Item>
-          <Link href={"/"}>
-            <House size={22} alt={'Home Page'}/>
+          <Link>
+            <NavLink to="/">
+              <DefaultColor>
+                <House size={22} alt={"Home Page"} />
+              </DefaultColor>
+            </NavLink>
           </Link>
         </Item>
         <Item>
-          <Link href={"/perfil"}>
-            <User size={22} alt={'Perfil'}/>
+          <Link>
+            <NavLink to="/perfil">
+              <DefaultColor>
+                <User size={22} alt={"Perfil"} />
+              </DefaultColor>
+            </NavLink>
           </Link>
         </Item>
         <Item>
-          <Link href={"/products"}>
-            <ForkKnife size={22} alt={'Catalog'}/>
+          <Link>
+            <NavLink to="/products">
+              <DefaultColor>
+                <ForkKnife size={22} alt={"Catalog"} />
+              </DefaultColor>
+            </NavLink>
           </Link>
         </Item>
         <Item>
-          <Link href={"#"}>
-            <ShoppingCartSimple size={22} alt={'Shopping Cart'}/>
+          <Link>
+            <NavLink to="#">
+            <DefaultColor>
+              <ShoppingCartSimple size={22} alt={"Shopping Cart"} />
+            </DefaultColor>
+            </NavLink>
           </Link>
         </Item>
         <Item>
-          <Link >
-            <SignOut size={22} alt={'LogOut'} onClick={handleSignout}/>
+          <Link>
+            <NavLink to="/login">
+            <DefaultColor>
+              <SignOut size={22} alt={"LogOut"} onClick={handleSignout} />
+            </DefaultColor>
+            </NavLink>
           </Link>
         </Item>
       </>
@@ -71,7 +91,9 @@ export function Navbar() {
 
   return (
     <NavBarContainer>
-      <NavBarLogo>Nate's Food <LogoImg src={logo}/> </NavBarLogo>
+      <NavBarLogo>
+        Nate's Food <LogoImg src={logo} />{" "}
+      </NavBarLogo>
 
       {menuClick ? (
         <Icon>

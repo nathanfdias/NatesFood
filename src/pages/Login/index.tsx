@@ -18,6 +18,8 @@ import {
   RightContentImg,
   Subtitle,
 } from "./style";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -36,13 +38,17 @@ export function Login() {
     }
   };
 
+
   async function handleSignin () { 
     try {
-       await auth.authenticate(username, password)
-
-       navigate("/")
+       await auth.authenticate(username, password);
+       toast.success('Login realizado com sucesso!');
+        setTimeout(() => {
+          navigate(`/`);
+       }, 2000);
     } catch (error) {
         console.log(error)
+        toast.error("Espaços vazios ou inválidos")
     }
   }
 
@@ -78,13 +84,14 @@ export function Login() {
             Login
           </ButtonLogin>
           <p>
-            Não possui uma conta? <NavLink to="/">Cadastre-se</NavLink>
+            Não possui uma conta? <NavLink to="/register">Cadastre-se</NavLink>
           </p>
         </LeftContent>
         <RightContent>
           <RightContentImg src={LoginImg} />
         </RightContent>
       </LoginContent>
+      <ToastContainer />
     </LoginContainer>
   );
 }

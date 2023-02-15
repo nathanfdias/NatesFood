@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
     const response = await LoginRequest(username, password);
 
     const payload = { token: response.token, username };
-
     setUser(payload);
     setUserLocalStorage(response);
   }

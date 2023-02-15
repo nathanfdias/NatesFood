@@ -40,8 +40,8 @@ export const CategoryItem = styled.div`
 `;
 
 export const ProductsContainer = styled.div`
-width: 100%;
-display: flex;
+  width: 100%;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -58,16 +58,16 @@ export const ProductsContent = styled.div`
 `;
 
 export const ProductImages = styled.img`
-      width: 260px;
-  height: 320px;
+  width: 320px;
+  height: 280px;
   background-size: cover;
-background-position: center;
+  background-position: center;
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
-`
+`;
 
 export const ProductDescription = styled.div`
-    width: 260px;
+  width: 320px;
   height: 8rem;
   display: flex;
   flex-direction: column;
@@ -76,21 +76,21 @@ export const ProductDescription = styled.div`
   background-color: white;
   border-top: none;
   font-size: 1.4rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   border-bottom-left-radius: 18px;
   border-bottom-right-radius: 18px;
-`
+`;
 
 export const ProductButtonCart = styled.button`
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: #202020;
-    color: white;
-    cursor: pointer;
-    padding: 0.4rem;
-    font-size: 0.8rem;
-    font-weight: bolder;
-`
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #202020;
+  color: white;
+  cursor: pointer;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: bolder;
+`;
