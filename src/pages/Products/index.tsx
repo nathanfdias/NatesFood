@@ -4,6 +4,7 @@ import bannerImg from "../../assets/bannerFood.png";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { api } from "../../service/api";
 import { currencyFormat } from "../../utils/helpers";
+import { Loading } from "../../components/Loading";
 import {
   Body,
   CategoryContainer,
@@ -14,23 +15,25 @@ import {
   ProductButtonCart,
   ProductDescription,
   ProductImages,
-  ProductsContent
+  ProductsContent,
 } from "./styles";
 
 interface IProduct {
-    id: number;
-    name: string;
-    imageUrl: string;
-    price: number;
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
 }
 
 export function Products() {
-  const [products, setProducts] = useState<IProduct[]>();
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [categoryName, setCategoryName] = useState("Hamburguer");
 
   useEffect(() => {
     api
-    .get(`/products/search?categoryName=${categoryName}&isActive=true&page=0&size=10`)
+      .get(
+        `/products/search?categoryName=${categoryName}&isActive=true&page=0&size=10`
+      )
       .then((res) => {
         setProducts(res.data.content);
         console.log(res.data.content);
@@ -64,20 +67,24 @@ export function Products() {
           </CategoryItem>
         </CategoryContainer>
         <ProductsContainer>
-          {products?.map((product) => {
-            return(
+          {!products.length ? (
+            <Loading/>
+          ) : (
+            products?.map((product) => {
+              return (
                 <ProductsContent key={product.id}>
-                    <ProductImages src={product.imageUrl}/>
-                    <ProductDescription>
-                        <p>{product.name}</p>
-                        <p>{currencyFormat(product.price)}</p>
-                        <ProductButtonCart>
-                            <p>Adicionar</p>
-                        </ProductButtonCart>
-                    </ProductDescription>
+                  <ProductImages src={product.imageUrl} />
+                  <ProductDescription>
+                    <p>{product.name}</p>
+                    <p>{currencyFormat(product.price)}</p>
+                    <ProductButtonCart>
+                      <p>Adicionar</p>
+                    </ProductButtonCart>
+                  </ProductDescription>
                 </ProductsContent>
-            )
-          })}
+              );
+            })
+          )}
         </ProductsContainer>
       </MainProduct>
     </Body>

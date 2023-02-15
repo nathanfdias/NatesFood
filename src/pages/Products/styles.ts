@@ -5,11 +5,12 @@ export const Body = styled.div`
 `;
 
 export const MainProduct = styled.main`
+  min-height: 93vh;
   width: 100%;
   margin-top: 7rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `;
 
