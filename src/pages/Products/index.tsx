@@ -4,6 +4,7 @@ import bannerImg from "../../assets/bannerFood.png";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { api } from "../../service/api";
 import { currencyFormat } from "../../utils/helpers";
+import { toast, ToastContainer } from 'react-toastify';
 import { Loading } from "../../components/Loading";
 import {
   Body,
@@ -86,7 +87,7 @@ export function Products() {
                         product.imageUrl,
                         product.price
                       )
-                      alert(`Produto: ${product.name} adicionado ao carrinho!`);
+                      toast.success(`Produto: ${product.name} adicionado ao carrinho!`);
                     }}>
                       <p>Adicionar</p>
                     </ProductButtonCart>
@@ -97,6 +98,8 @@ export function Products() {
           )}
         </ProductsContainer>
       </MainProduct>
+      <ToastContainer />
     </Body>
+    
   );
 }

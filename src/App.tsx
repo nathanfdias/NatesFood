@@ -5,6 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Router } from "./router/Router";
 import usePersistedState from "./utils/usePersistensedState";
 import { CartProvider } from "./context/handleCart";
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer } from "react-toastify";
 
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
@@ -28,6 +30,18 @@ function App() {
           </ThemeProvider>
         </CartProvider>
       </AuthProvider>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }

@@ -18,8 +18,7 @@ import {
   RightContentImg,
   Subtitle,
 } from "./style";
-import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from 'react-toastify';
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -91,7 +90,6 @@ export function Login() {
           <RightContentImg src={LoginImg} />
         </RightContent>
       </LoginContent>
-      <ToastContainer />
     </LoginContainer>
   );
 }
