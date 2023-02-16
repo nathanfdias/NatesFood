@@ -24,6 +24,7 @@ import {
   SignOut,
   House,
   ForkKnife,
+  Gear
 } from "phosphor-react";
 import logo from "../../assets/logo.png";
 
@@ -58,15 +59,6 @@ export function Navbar() {
         </Item>
         <Item>
           <Link>
-            <NavLink to="/perfil">
-              <DefaultColor>
-                <User size={22} alt={"Perfil"} />
-              </DefaultColor>
-            </NavLink>
-          </Link>
-        </Item>
-        <Item>
-          <Link>
             <NavLink to="/products">
               <DefaultColor>
                 <ForkKnife size={22} alt={"Catalog"} />
@@ -83,6 +75,15 @@ export function Navbar() {
             </DefaultColorCart>
             </NavLink>
           </LinkCart>
+        </Item>
+        <Item>
+          <Link>
+            <NavLink to="/config">
+              <DefaultColor>
+                <Gear size={22} alt={"Config"} />
+              </DefaultColor>
+            </NavLink>
+          </Link>
         </Item>
         <Item>
           <Link>

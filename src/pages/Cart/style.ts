@@ -21,7 +21,7 @@ export const ContentDiv = styled.div`
   margin-bottom: 3rem;
   width: 80vw;
   min-height: 80vh;
-  background-color: #ffffff;
+  background-color: #fff;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,

@@ -164,6 +164,5 @@ border-color:red;
   border-radius: 60%;
   font-weight: 700;
   margin-left: -0.4rem;
-  margin-top: 0.6rem;
-
+  margin-top: -0.6rem;
 `;
