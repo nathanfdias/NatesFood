@@ -87,7 +87,16 @@ export function Products() {
                         product.imageUrl,
                         product.price
                       )
-                      toast.success(`Produto: ${product.name} adicionado ao carrinho!`);
+                      toast(`Produto: ${product.name} adicionado ao carrinho!`, {
+                        position: "top-center",
+                        autoClose: 800,
+                        hideProgressBar: true,
+                        closeOnClick: false,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                     }}>
                       <p>Adicionar</p>
                     </ProductButtonCart>
