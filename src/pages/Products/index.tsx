@@ -4,7 +4,7 @@ import bannerImg from "../../assets/bannerFood.png";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { api } from "../../service/api";
 import { currencyFormat } from "../../utils/helpers";
-import { toast, ToastContainer } from 'react-toastify';
+import { toast} from 'react-toastify';
 import { Loading } from "../../components/Loading";
 import {
   Body,
@@ -107,7 +107,6 @@ export function Products() {
           )}
         </ProductsContainer>
       </MainProduct>
-      <ToastContainer />
     </Body>
     
   );

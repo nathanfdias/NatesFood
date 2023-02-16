@@ -111,3 +111,59 @@ export const Link = styled.div`
 export const DefaultColor = styled.div`
   color: #F0BF8C;
 `;
+
+  export const DefaultColorCart = styled.div`
+  color: #F0BF8C;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LinkCart = styled.div`
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #F0BF8C;
+  text-align: center;
+  padding: 10px;
+  padding-bottom: 10px;
+  margin: 0px 5px;
+  transition: 250ms;
+  height: 49px;
+
+  &:hover {
+    border-bottom: 1px solid #F0BF8C;
+    transition: 250ms;
+  }
+
+  @media (max-width: 800px) {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    border-width: 0px;
+    opacity: 0.75;
+    &:hover {
+      border-width: 0px;
+      opacity: 0.9;
+    }
+  }
+`;
+
+export const SymbolQuantityCartNumber = styled.p`
+border-color:red;
+  font-size: 0.8rem;
+  background-color: red;
+  color: #fff;
+  width: 0.8rem;
+  height: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60%;
+  font-weight: 700;
+  margin-left: -0.4rem;
+  margin-top: 0.6rem;
+
+`;

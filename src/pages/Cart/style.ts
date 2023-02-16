@@ -115,20 +115,20 @@ export const DivCounter = styled.div`
 `;
 
 export const Button = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  background-color: #d9d9d9;
+  background-color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  font-weight: 900;
-  color: #202020;
+  font-size: 1.2rem;
+  color: #fff;
   cursor: pointer;
 
   &:hover {
     background-color: #f5f5f5;
+    color: #000;
   }
 `;
 
@@ -148,7 +148,7 @@ export const DivPrices = styled.div`
 
 export const DivAmount = styled.div`
   padding-top: 20px;
-  font-size: 26px;
+  font-size: 1.6rem;
   font-weight: 800;
   color: #202020;
 `;

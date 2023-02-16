@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../context/handleCart";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../utils/useAuth";
 import {
@@ -11,6 +12,9 @@ import {
   NavBarListAct,
   LogoImg,
   DefaultColor,
+  DefaultColorCart,
+  SymbolQuantityCartNumber,
+  LinkCart
 } from "./style";
 import {
   List,
@@ -27,6 +31,9 @@ export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
+  const {
+    productsCart,
+  } = useContext(CartContext);
 
   const toggleMenuClick = () => {
     setMenuClick(!menuClick);
@@ -68,13 +75,14 @@ export function Navbar() {
           </Link>
         </Item>
         <Item>
-          <Link>
+          <LinkCart>
             <NavLink to="/cart">
-            <DefaultColor>
+            <DefaultColorCart>
               <ShoppingCartSimple size={22} alt={"Shopping Cart"} />
-            </DefaultColor>
+                <SymbolQuantityCartNumber>{productsCart.length}</SymbolQuantityCartNumber>
+            </DefaultColorCart>
             </NavLink>
-          </Link>
+          </LinkCart>
         </Item>
         <Item>
           <Link>

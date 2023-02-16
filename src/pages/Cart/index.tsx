@@ -120,7 +120,7 @@ export function Cart() {
             </DivTotal>
 
             <DivSubAndItems>
-              <ButtonCheckout onClick={() => navigate("/products")}>Voltar</ButtonCheckout>
+              <ButtonCheckout onClick={() => navigate(-1)}>Voltar</ButtonCheckout>
               <ButtonCheckout>Fazer Pedido</ButtonCheckout>
             </DivSubAndItems>
           </DivCheckout>
