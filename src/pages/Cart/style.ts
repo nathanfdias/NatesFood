@@ -80,6 +80,10 @@ export const ImgProduct = styled.img`
   width: 10rem;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.25);
+  @media(max-width: 1400px){
+    width: 8rem;
+    height: 80px;
+}
 `;
 
 export const DivAbout = styled.div`
@@ -96,13 +100,11 @@ export const Title = styled.h1`
   font-size: 32px;
   font-weight: 800;
   color: #202020;
-`;
-
-export const Subtitle = styled.h3`
-  line-height: 10px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #909090;
+  @media(max-width: 1400px){
+    font-size: 24px;
+    padding-left: 6rem;
+    line-height: 20px;
+  }
 `;
 
 export const DivCounter = styled.div`
@@ -181,7 +183,14 @@ export const DivSubAndItems = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  @media(max-width: 1300px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
 `;
 
 export const Subtotal = styled.h3`
@@ -212,6 +221,9 @@ margin-block: 3rem;
   font-size: 16px;
   font-weight: 600;
   color: #fff;
+  @media(max-width: 1300px) {
+    margin-block: 1rem;
+}
 `;
 
 export const DivEmptyCart = styled.div`

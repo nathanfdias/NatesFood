@@ -22,8 +22,6 @@ import {
   Items,
   LineBreak,
   Number,
-  Subtitle,
-  Subtotal,
   Body,
   Title,
   Container,
@@ -33,8 +31,10 @@ import {
 } from "./style";
 import { CartContext } from "../../context/handleCart";
 import { currencyFormat } from "../../utils/helpers";
+import { useNavigate } from "react-router-dom";
 
 export function Cart() {
+  const navigate = useNavigate();
   let totalPrice: number = 0;
   const {
     productsCart,
@@ -67,7 +67,7 @@ export function Cart() {
                 const subtotal: number = product.price * product.quantidade;
                 totalPrice += subtotal;
                 return (
-                  <DivCart>
+                  <DivCart key={product.id}>
                     <ImageBox>
                       <ImgProduct src={product.imageUrl} />
                     </ImageBox>
@@ -120,7 +120,7 @@ export function Cart() {
             </DivTotal>
 
             <DivSubAndItems>
-              <ButtonCheckout>Voltar</ButtonCheckout>
+              <ButtonCheckout onClick={() => navigate("/products")}>Voltar</ButtonCheckout>
               <ButtonCheckout>Fazer Pedido</ButtonCheckout>
             </DivSubAndItems>
           </DivCheckout>
