@@ -193,7 +193,6 @@ export const Subtotal = styled.h3`
 export const Items = styled.h4`
   font-size: 16px;
   font-weight: 500;
-  color: #909090;
   line-height: 10px;
 `;
 
@@ -206,11 +205,28 @@ export const DivTotalAmount = styled.div`
 export const ButtonCheckout = styled.button`
 padding-block: 0.7rem;
 width: 9rem;
-margin-block: 2rem;
+margin-block: 3rem;
   border: none;
   background: #202020;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   color: #fff;
+`;
+
+export const DivEmptyCart = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 26rem;
+  width: 100%;
+`;
+
+export const TitleEmptyCart = styled.h2`
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #2f3841;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.65);
 `;

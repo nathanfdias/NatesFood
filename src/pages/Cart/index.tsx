@@ -1,5 +1,5 @@
 import { Navbar } from "../../components/Navbar/Navbar";
-import { useContext } from 'react';
+import { useContext } from "react";
 import {
   ActionTitle,
   Button,
@@ -27,7 +27,9 @@ import {
   Body,
   Title,
   Container,
-  DivContainerCart
+  DivContainerCart,
+  DivEmptyCart,
+  TitleEmptyCart
 } from "./style";
 import { CartContext } from "../../context/handleCart";
 import { currencyFormat } from "../../utils/helpers";
@@ -42,74 +44,87 @@ export function Cart() {
     removalItem,
   } = useContext(CartContext);
 
+  const emptyCart = () => {
+    return <p>Lista de Pedidos vazia</p>;
+  };
+
   return (
     <Body>
-      <Navbar/>
+      <Navbar />
       <Container>
+        <ContentDiv>
+          <DivHeader>
+            <HeaderTitle>Shopping Cart</HeaderTitle>
+            <ActionTitle onClick={clearCart}>Remove All</ActionTitle>
+          </DivHeader>
+          {!productsCart.length ? (
+            <DivEmptyCart>
+              <TitleEmptyCart>Carrinho vazio</TitleEmptyCart>
+            </DivEmptyCart>
+          ) : (
+            <DivContainerCart>
+              {productsCart?.map((product) => {
+                const subtotal: number = product.price * product.quantidade;
+                totalPrice += subtotal;
+                return (
+                  <DivCart>
+                    <ImageBox>
+                      <ImgProduct src={product.imageUrl} />
+                    </ImageBox>
 
-      <ContentDiv>
-        <DivHeader>
-          <HeaderTitle>Shopping Cart</HeaderTitle>
-          <ActionTitle onClick={clearCart}>Remove All</ActionTitle>
-        </DivHeader>
-        <DivContainerCart>
-          {productsCart?.map((product) => {
-            const subtotal: number = product.price * product.quantidade;
-            totalPrice += subtotal;
+                    <DivAbout>
+                      <Title>{product.name.substring(0, 22)}</Title>
+                    </DivAbout>
 
-            return(
-              <DivCart>
-                <ImageBox>
-                  <ImgProduct src={product.imageUrl} />
-                </ImageBox>
+                    <DivCounter>
+                      <Button
+                        onClick={() => handleRemoveItemToCart(product.id)}
+                      >
+                        -
+                      </Button>
+                      <Number>{product.quantidade}</Number>
+                      <Button
+                        onClick={() => {
+                          handleAddItemToCart(
+                            product.id,
+                            product.name,
+                            product.imageUrl,
+                            product.price
+                          );
+                        }}
+                      >
+                        +
+                      </Button>
+                    </DivCounter>
 
-                <DivAbout>
-                  <Title>{product.name.substring(0,22)}</Title>
-                </DivAbout>
-
-                <DivCounter>
-                  <Button onClick={() => handleRemoveItemToCart(product.id)}>-</Button>
-                  <Number>{product.quantidade}</Number>
-                  <Button 
-                  onClick={() => {
-                    handleAddItemToCart(
-                      product.id,
-                      product.name,
-                      product.imageUrl,
-                      product.price
-                    )
-                  }}>+</Button>
-                </DivCounter>
-
-                <DivPrices>
-                  <DivAmount>{currencyFormat(subtotal)}</DivAmount>
-                  <DivRemove>
-                    {" "}
-                    <u  onClick={() => removalItem(product.id)}>Remove</u>
-                  </DivRemove>
-                </DivPrices>
-              </DivCart>
-            )
-          })}
-
-        </DivContainerCart>
-
+                    <DivPrices>
+                      <DivAmount>{currencyFormat(subtotal)}</DivAmount>
+                      <DivRemove>
+                        {" "}
+                        <u onClick={() => removalItem(product.id)}>Remove</u>
+                      </DivRemove>
+                    </DivPrices>
+                  </DivCart>
+                );
+              })}
+            </DivContainerCart>
+          )}
           <LineBreak />
-        <DivCheckout>
-          <DivTotal>
-            <DivSubAndItems>
-              {/* <Subtotal>Subtotal</Subtotal> */}
-              <Items>{productsCart.length} items</Items>
-            </DivSubAndItems>
-            <DivTotalAmount>{currencyFormat(totalPrice)}</DivTotalAmount>
-          </DivTotal>
+          <DivCheckout>
+            <DivTotal>
+              <DivSubAndItems>
+                {/* <Subtotal>Subtotal</Subtotal> */}
+                <Items>{productsCart.length} items</Items>
+              </DivSubAndItems>
+              <DivTotalAmount>{currencyFormat(totalPrice)}</DivTotalAmount>
+            </DivTotal>
 
-          <DivSubAndItems>
-            <ButtonCheckout>Voltar</ButtonCheckout>
-            <ButtonCheckout>Fazer Pedido</ButtonCheckout>
-          </DivSubAndItems>
-        </DivCheckout>
-      </ContentDiv>
+            <DivSubAndItems>
+              <ButtonCheckout>Voltar</ButtonCheckout>
+              <ButtonCheckout>Fazer Pedido</ButtonCheckout>
+            </DivSubAndItems>
+          </DivCheckout>
+        </ContentDiv>
       </Container>
     </Body>
   );
