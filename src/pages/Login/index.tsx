@@ -19,6 +19,7 @@ import {
   Subtitle,
 } from "./style";
 import { toast } from 'react-toastify';
+import api from '../../service/api';
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -37,19 +38,21 @@ export function Login() {
     }
   };
 
-
-  async function handleSignin () { 
-    try {
-       await auth.authenticate(username, password);
-       toast.success('Login realizado com sucesso!');
-        setTimeout(() => {
-          navigate(`/`);
-       }, 2000);
-    } catch (error) {
-        console.log(error)
-        toast.error("Espaços vazios ou inválidos")
-    }
-  }
+  const handleSignIn = (e : React.MouseEvent<HTMLButtonElement, MouseEvent>) => { 
+    api
+    .post("/auth/signin", {
+      username: username,
+      password: password,
+    })
+    .then((request) => {
+      toast.success("Login successful !");
+      auth.authenticate(request.data);
+      navigate("/");
+    })
+    .catch((err) => {
+      toast.error(err.response.data.message);
+    });
+};
 
 
   return (
@@ -79,7 +82,7 @@ export function Login() {
               </InputPasswordVisibility>
             </InputPasswordContent>
           </InputContainer>
-          <ButtonLogin onClick={handleSignin}>
+          <ButtonLogin onClick={(e) => handleSignIn(e)}>
             Login
           </ButtonLogin>
           <p>

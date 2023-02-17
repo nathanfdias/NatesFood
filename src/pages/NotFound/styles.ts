@@ -38,6 +38,7 @@ export const TitleNotFound = styled.h2`
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     -webkit-text-size-adjust: none;
     -webkit-font-smoothing: antialiased;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
 `;
 
 export const SubTitleNotFound = styled.h4`

@@ -2,7 +2,7 @@ import { BeerBottle, Cookie, Hamburger, Pizza } from "phosphor-react";
 import { useEffect, useState, useContext } from "react";
 import bannerImg from "../../assets/bannerFood.png";
 import { Navbar } from "../../components/Navbar/Navbar";
-import { api } from "../../service/api";
+import api from "../../service/api";
 import { currencyFormat } from "../../utils/helpers";
 import { toast} from 'react-toastify';
 import { Loading } from "../../components/Loading";

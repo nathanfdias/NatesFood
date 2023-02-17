@@ -55,10 +55,6 @@ export const ActionTitle = styled.h5`
 export const DivContainerCart = styled.div`
 min-height: 26rem;
 width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
     margin-bottom: 20px;
 `;
 

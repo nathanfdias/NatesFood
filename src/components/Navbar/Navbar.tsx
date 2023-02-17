@@ -14,7 +14,7 @@ import {
   DefaultColor,
   DefaultColorCart,
   SymbolQuantityCartNumber,
-  LinkCart
+  LinkCart,
 } from "./style";
 import {
   List,
@@ -24,25 +24,33 @@ import {
   SignOut,
   House,
   ForkKnife,
-  Gear
+  Gear,
 } from "phosphor-react";
 import logo from "../../assets/logo.png";
+import api from "../../service/api";
 
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
   const auth = useAuth();
   const navigate = useNavigate();
-  const {
-    productsCart,
-  } = useContext(CartContext);
+  const { productsCart } = useContext(CartContext);
 
   const toggleMenuClick = () => {
     setMenuClick(!menuClick);
   };
 
   function handleSignout() {
-    auth.logout();
-    navigate("/login");
+    api
+      .post("/auth/signout")
+      .then(() => {
+        localStorage.removeItem("user");
+        navigate("/");
+      })
+      .catch((error) => {
+        if (error.message === "Failed to refresh token") {
+          navigate("/login");
+        }
+      });
   }
 
   const ListLinks = () => {
@@ -69,10 +77,12 @@ export function Navbar() {
         <Item>
           <LinkCart>
             <NavLink to="/cart">
-            <DefaultColorCart>
-              <ShoppingCartSimple size={22} alt={"Shopping Cart"} />
-                <SymbolQuantityCartNumber>{productsCart.length}</SymbolQuantityCartNumber>
-            </DefaultColorCart>
+              <DefaultColorCart>
+                <ShoppingCartSimple size={22} alt={"Shopping Cart"} />
+                <SymbolQuantityCartNumber>
+                  {productsCart.length}
+                </SymbolQuantityCartNumber>
+              </DefaultColorCart>
             </NavLink>
           </LinkCart>
         </Item>
@@ -88,9 +98,9 @@ export function Navbar() {
         <Item>
           <Link>
             <NavLink to="/login">
-            <DefaultColor>
-              <SignOut size={22} alt={"LogOut"} onClick={handleSignout} />
-            </DefaultColor>
+              <DefaultColor>
+                <SignOut size={22} alt={"LogOut"} onClick={handleSignout} />
+              </DefaultColor>
             </NavLink>
           </Link>
         </Item>

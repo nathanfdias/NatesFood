@@ -1,30 +1,40 @@
-import { api } from "../../service/api";
-import { IUser } from './types';
+import { IUser } from "./types";
 
-
-export function setUserLocalStorage ( user: IUser | null)  {
-    localStorage.setItem('object', JSON.stringify(user));
+export function setUserLocalStorage(user: IUser | null) {
+  localStorage.setItem("user", JSON.stringify(user));
 }
 
-export function getUserLocalStorage ()  { 
-    const json = localStorage.getItem('object');
+export function getUserLocalStorage(): IUser | null {
+  const json = localStorage.getItem("user");
 
-    if(!json) { 
-        return null;
-    }
+  if (!json) {
+    return null;
+  }
 
-    const object = JSON.parse(json)
+  let object = null;
+  try {
+    object = JSON.parse(json);
+  } catch (e) {
+    localStorage.removeItem("user");
+  }
 
-    return object ?? null; 
+  if (!isUserStorage(object)) {
+    localStorage.removeItem("user");
+    return null;
+  }
+
+  return object;
 }
 
-export async function LoginRequest (username: string, password: string) { 
- 
-    try {
-        const request = await api.post("/auth/signin", {username, password})
-
-        return request.data;
-    } catch (error) {
-        console.log(error); 
-    }
+function isUserStorage(object: any): object is IUser {
+  return (
+    object &&
+    typeof object.username === "string" &&
+    typeof object.accessToken === "string" &&
+    typeof object.type === "string" &&
+    typeof object.refreshToken === "string" &&
+    typeof object.id === "number" &&
+    typeof object.email === "string" &&
+    Array.isArray(object.roles)
+  );
 }
