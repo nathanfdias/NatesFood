@@ -28,9 +28,12 @@ import {
 } from "phosphor-react";
 import logo from "../../assets/logo.png";
 import api from "../../service/api";
+import { getUserLocalStorage } from "../../context/authProvider/util";
+import { toast } from "react-toastify";
 
 export function Navbar() {
   const [menuClick, setMenuClick] = useState(false);
+   const user = getUserLocalStorage();
   const auth = useAuth();
   const navigate = useNavigate();
   const { productsCart } = useContext(CartContext);
@@ -45,6 +48,7 @@ export function Navbar() {
       .then(() => {
         localStorage.removeItem("user");
         navigate("/");
+        toast.warning("Usuário deslogado");
       })
       .catch((error) => {
         if (error.message === "Failed to refresh token") {
@@ -95,15 +99,27 @@ export function Navbar() {
             </NavLink>
           </Link>
         </Item>
-        <Item>
-          <Link>
-            <NavLink to="/login">
-              <DefaultColor>
-                <SignOut size={22} alt={"LogOut"} onClick={handleSignout} />
-              </DefaultColor>
-            </NavLink>
-          </Link>
-        </Item>
+        {user == null ? (
+           <Item>
+           <Link>
+             <NavLink to="/login">
+               <DefaultColor>
+                 <User size={22} alt={"LogIn"} />
+               </DefaultColor>
+             </NavLink>
+           </Link>
+         </Item>
+        ) : (
+          <Item>
+            <Link>
+              <NavLink to="/login">
+                <DefaultColor>
+                  <SignOut size={22} alt={"LogOut"} onClick={handleSignout} />
+                </DefaultColor>
+              </NavLink>
+            </Link>
+          </Item>
+        )}
       </>
     );
   };
